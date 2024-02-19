@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import FilteredPokedexTable from './components/FilteredPokedexTable';
+const pokemon = [
+  {
+    id: 1,
+    name: "Bulbasaur",
+    types: ["grass"],
+    sprite: "https://pokemon.com/pictures/bulbasaur.png"
+  }, {
+    id: 2,
+    name: "Charizard",
+    types: ["fire"],
+    sprite: "https://pokemon.com/pictures/charizard.png"
+  }
+];
 
 function App() {
+  const [selectedType, setSelectedType] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <FilteredPokedexTable pokemon={pokemon} selectedType={selectedType} selectType={setSelectedType} />
     </div>
   );
 }
